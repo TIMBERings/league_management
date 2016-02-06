@@ -1,0 +1,11 @@
+= simple_form_for(@alley) do |f|
+  = f.error_notification
+
+  .row
+    .columns.medium-6
+        = f.input :name
+        = f.input :address_id
+  .row
+    .columns.medium-6
+      .form-actions
+        = f.button :submit, class: 'button'

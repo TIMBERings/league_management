@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @alley.name
+%p
+  %b Address:
+  = @alley.address_id
+
+= link_to 'Edit', edit_alley_path(@alley)
+\|
+= link_to 'Back', alleys_path

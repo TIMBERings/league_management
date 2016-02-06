@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @league.name
+%p
+  %b Start date:
+  = @league.start_date
+%p
+  %b End date:
+  = @league.end_date
+%p
+  %b Day:
+  = @league.day
+%p
+  %b Time:
+  = @league.time
+%p
+  %b Practice:
+  = @league.practice
+%p
+  %b Alley:
+  = @league.alley
+
+= link_to 'Edit', edit_league_path(@league)
+\|
+= link_to 'Back', leagues_path

@@ -1,0 +1,11 @@
+= simple_form_for(@bowler) do |f|
+  = f.error_notification
+
+  .row
+    .columns.medium-6
+        = f.input :name
+        = f.input :usbc_number
+  .row
+    .columns.medium-6
+      .form-actions
+        = f.button :submit, class: 'button'

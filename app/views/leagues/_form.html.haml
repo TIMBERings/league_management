@@ -1,0 +1,16 @@
+= simple_form_for(@league) do |f|
+  = f.error_notification
+
+  .row
+    .columns.medium-6
+        = f.input :name
+        = f.input :start_date
+        = f.input :end_date
+        = f.input :day
+        = f.input :time
+        = f.input :practice
+        = f.association :alley
+  .row
+    .columns.medium-6
+      .form-actions
+        = f.button :submit, class: 'button'

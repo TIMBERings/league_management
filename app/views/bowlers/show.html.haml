@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @bowler.name
+%p
+  %b Usbc number:
+  = @bowler.usbc_number
+
+= link_to 'Edit', edit_bowler_path(@bowler)
+\|
+= link_to 'Back', bowlers_path

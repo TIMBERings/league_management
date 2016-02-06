@@ -1,0 +1,51 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %title= content_for?(:title) ? yield(:title) : "foundation-rails"
+    = stylesheet_link_tag    "application"
+    = javascript_include_tag "vendor/modernizr"
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    %nav.top-bar{"data-topbar" => "", :role => "navigation"}
+      %ul.title-area
+        %li.name
+          %h1
+            %a{style: "cursor: default;"} League
+        / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+        / <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+      %section.top-bar-section
+        / Right Nav Section
+        %ul.right
+          - if user_signed_in?
+            %li.has-dropdown
+              %a{:href => "#"} #{current_user.email}
+              %ul.dropdown
+                %li
+                  = link_to "Sign out", destroy_user_session_path, :method => :delete
+                %li
+                  = link_to 'Settings'
+          - else
+            %li= link_to "Sign up", new_user_registration_path
+            %li= link_to "Sign in", new_user_session_path
+        / Left Nav Section
+        /
+          <ul class="left">
+          <li><a href="#">Left Nav Button</a></li>
+          </ul>
+    - if flash[:notice]
+      %p.alert-box.info
+        = flash[:notice]
+        %a.close x
+    - if flash[:success]
+      %p.alert-box.success= flash[:success]
+    - if flash[:warning]
+      %p.alert-box.warning= flash[:warning]
+    - if flash[:alert]
+      %p.alert-box.alert= flash[:alert]
+    .row
+      .columns
+        = yield

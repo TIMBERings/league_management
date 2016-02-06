@@ -1,0 +1,23 @@
+%h1 Listing alleys
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Address
+      %th
+      %th
+      %th
+
+  %tbody
+    - @alleys.each do |alley|
+      %tr
+        %td= alley.name
+        %td= alley.address_id
+        %td= link_to 'Show', alley
+        %td= link_to 'Edit', edit_alley_path(alley)
+        %td= link_to 'Destroy', alley, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Alley', new_alley_path

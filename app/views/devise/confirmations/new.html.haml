@@ -1,0 +1,15 @@
+%h2 Resend confirmation instructions
+= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+  = devise_error_messages!
+  .row
+    .columns.medium-6
+      = f.email_field :email, label: 'Email Address'
+      = f.input :email, label: 'Email Address', hint: 'Here\'s a hint', disabled: true
+      / , error: 'Username is mandatory, please specify one', hint: 'text', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), autofocus: true
+  .row
+    .columns
+      .actions
+        = f.submit "Resend confirmation instructions", class: 'button'
+.row
+  .columns
+    = render "devise/shared/links"

@@ -1,0 +1,33 @@
+%h1 Listing leagues
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Start date
+      %th End date
+      %th Day
+      %th Time
+      %th Practice
+      %th Alley
+      %th
+      %th
+      %th
+
+  %tbody
+    - @leagues.each do |league|
+      %tr
+        %td= league.name
+        %td= league.start_date
+        %td= league.end_date
+        %td= league.day
+        %td= league.time
+        %td= league.practice
+        %td= league.alley
+        %td= link_to 'Show', league
+        %td= link_to 'Edit', edit_league_path(league)
+        %td= link_to 'Destroy', league, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New League', new_league_path
