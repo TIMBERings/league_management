@@ -31,6 +31,8 @@ RSpec.describe BowlersController, type: :controller do
     skip("Add a hash of attributes invalid for your model")
   }
 
+  let(:team) { FactoryGirl.create(:team)}
+
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # BowlersController. Be sure to keep this updated too.
@@ -39,7 +41,7 @@ RSpec.describe BowlersController, type: :controller do
   describe "GET #index" do
     it "assigns all bowlers as @bowlers" do
       bowler = Bowler.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {team_id: team.id}, valid_session
       expect(assigns(:bowlers)).to eq([bowler])
     end
   end
@@ -54,7 +56,7 @@ RSpec.describe BowlersController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new bowler as @bowler" do
-      get :new, {}, valid_session
+      get :new, {team_id: team.id}, valid_session
       expect(assigns(:bowler)).to be_a_new(Bowler)
     end
   end
@@ -71,7 +73,7 @@ RSpec.describe BowlersController, type: :controller do
     context "with valid params" do
       it "creates a new Bowler" do
         expect {
-          post :create, {:bowler => valid_attributes}, valid_session
+          post :create, {:bowler => valid_attributes, team_id: team.id}, valid_session
         }.to change(Bowler, :count).by(1)
       end
 

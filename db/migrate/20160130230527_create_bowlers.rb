@@ -3,6 +3,7 @@ class CreateBowlers < ActiveRecord::Migration
     create_table :bowlers do |t|
       t.string :name, null: false
       t.string :usbc_number
+      t.integer :team_id, foreign_key: true, null: false
 
       t.timestamps null: false
     end

@@ -30,7 +30,7 @@ RSpec.describe AddressesController, type: :controller do
   let(:invalid_attributes) {
     skip("Add a hash of attributes invalid for your model")
   }
-
+  let(:alley) {FactoryGirl.create(:alley)}
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
   # AddressesController. Be sure to keep this updated too.
@@ -39,7 +39,7 @@ RSpec.describe AddressesController, type: :controller do
   describe "GET #index" do
     it "assigns all addresses as @addresses" do
       address = Address.create! valid_attributes
-      get :index, {}, valid_session
+      get :index, {alley_id: alley.id}, valid_session
       expect(assigns(:addresses)).to eq([address])
     end
   end
@@ -54,7 +54,7 @@ RSpec.describe AddressesController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new address as @address" do
-      get :new, {}, valid_session
+      get :new, {alley_id: alley.id}, valid_session
       expect(assigns(:address)).to be_a_new(Address)
     end
   end
@@ -71,7 +71,7 @@ RSpec.describe AddressesController, type: :controller do
     context "with valid params" do
       it "creates a new Address" do
         expect {
-          post :create, {:address => valid_attributes}, valid_session
+          post :create, {:address => valid_attributes, alley_id: alley.id}, valid_session
         }.to change(Address, :count).by(1)
       end
 

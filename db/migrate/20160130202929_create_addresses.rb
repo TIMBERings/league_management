@@ -6,7 +6,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :city, null: false
       t.string :state, null: false
       t.string :zip_code, null: false
-      t.string :country, null: false, default: 'United States'
+      t.string :country, null: false, default: 'United States of America'
 
       t.timestamps null: false
     end

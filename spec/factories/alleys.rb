@@ -1,7 +1,6 @@
 FactoryGirl.define do
   factory :alley do
-    name "MyString"
-address_id 1
+    name Faker::Company.name
+    association :address, factory: :address
   end
-
 end

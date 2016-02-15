@@ -1,9 +1,17 @@
 Rails.application.routes.draw do
-  resources :teams
-  resources :bowlers
-  resources :leagues
-  resources :alleys
-  resources :addresses
+  resources :leagues do
+    resources :teams, shallow: true
+    resources :alleys, shallow: true
+  end
+
+  resources :teams do
+    resources :bowlers, shallow: true
+  end
+
+  resources :alleys do
+    resources :addresses, shallow: true
+  end
+
   root to: 'home#index'
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
